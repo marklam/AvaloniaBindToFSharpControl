@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fs="using:FSharpControl"
+        xmlns:cs="using:CSharpControl"
+        xmlns:ab="using:AvaloniaBindToFSharpControl"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaBindToFSharpControl.MainWindow"
+        x:DataType="ab:MainWindowViewModel"
+        Title="AvaloniaBindToFSharpControl">
+    <Grid RowDefinitions="*,*,*">
+        <fs:UserControl1 Grid.Row="0" Message="{Binding FSharpMessage}"/> <!-- This one blows up at runtime becuse UserControl1.MessageProperty is not public -->
+        <!--<fs:UserControl2 Grid.Row="1" Message="{Binding FSharpMessage}"/>--> <!-- This one won't build because UserControl2.MessageProperty is a property not a field -->
+        <cs:UserControl1 Grid.Row="2" Message="{Binding CSharpMessage}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly> <!-- Otherwise the UserControl1 bindings won't compile because MessageProperty is removed from the reference assembly -->
+    <OtherFlags>$(OtherFlags) --realsig+</OtherFlags> <!-- Doesn't seem to help -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="UserControl1.axaml" />
+    <Compile Include="TextDraw.fs" />
+    <Compile Include="UserControl1.fs" />
+    <Compile Include="UserControl2.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.3" />
+    <PackageReference Include="Avalonia.Skia" Version="11.1.3" />
+  </ItemGroup>
+
+</Project>
