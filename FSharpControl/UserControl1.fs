@@ -14,7 +14,7 @@ type UserControl1 () =
     static let MessageProperty = AvaloniaProperty.Register<UserControl1, string>("Message")
 
     // These properties exist so that code (not xaml) in other assemblies can refer to the properties.
-    static member val _MessageProperty = MessageProperty
+    static member _MessageProperty = MessageProperty
 
     member this.Message
         with get () = this.GetValue(MessageProperty)

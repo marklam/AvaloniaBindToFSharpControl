@@ -7,11 +7,10 @@ open Avalonia.Media
 type UserControl2 () =
     inherit UserControl ()
 
-    // These are required to be fields (ie let) by Avalonia's bindings.
-    // If <ProduceReferenceAssembly>false</ProduceReferenceAssembly> is not specified in the fsproj,
-    // then the bindings will search the the generated reference assembly - which won't contain these, because a static let binding is internal.
-    // And so the bindings will fail when compiling the xaml.
-    static member MessageProperty = AvaloniaProperty.Register<UserControl1, string>("Message")
+    static let messageProperty = AvaloniaProperty.Register<UserControl1, string>("Message")
+
+    // Avalonia doesn't like the property definitions to be properties
+    static member MessageProperty = messageProperty
 
     member this.Message
         with get () = this.GetValue(UserControl2.MessageProperty)
